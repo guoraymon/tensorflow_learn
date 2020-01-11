@@ -10,23 +10,19 @@ train_x = np.linspace(-1, 1, 100)  # 使用linspace均分函数在-1,1之间平�
 noise = np.random.randn(*train_x.shape) * 0.3  # 噪音
 train_y = 2 * train_x + noise  # y=2x+noise
 
-# # 构建模型
-# model = tf.keras.Sequential()
-# model.add(tf.keras.layers.Dense(units=1, input_shape=(1,)))
-#
-# print(model.predict(train_x))
-#
-# # 编译模型
-# model.compile(
-#     optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
-#     loss='mse'  # 优化器 loss_mse = tf.keras.losses.MSE(y,model.predict(x))
-# )
-#
-# # 训练模型
-# history = model.fit(train_x, train_y, batch_size=2, epochs=100)
-#
-# # 保存模型
-# model.save('models/y_2x')
+# 构建模型
+model = tf.keras.Sequential()  # Sequential 序贯模型结构
+model.add(tf.keras.layers.Dense(units=1, input_shape=(1,)))  # 添加线性层 units: 输出维度 input_dim: 输入维度
+model.summary()  # 查看模型结构
+
+# 编译模型
+model.compile(optimizer='sgd', loss='mse')  # 优化器: sgd随机梯度下降, 损失函数: MSE 平方损失
+
+# 训练模型
+history = model.fit(train_x, train_y, batch_size=2, epochs=1000)
+
+# 保存模型
+model.save('models/y_2x')
 
 # 加载模型
 model = tf.keras.models.load_model('models/y_2x')
