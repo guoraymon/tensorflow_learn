@@ -1,0 +1,23 @@
+硬件配置 i5 8600k+16G+1070Ti+Win10 1909
+
+Conda是开源的包和环境管理器，包管理类似于pip。
+
+Anaconda包含Conda，Jupyter以及一堆常用科学包,安装包约500M。
+
+我直接选用Anaconda，不嫌麻烦也可以选择最小版本的MiniConda，只自带基础依赖包。
+
+Anaconda直接官网下载exe包安装，Anaconda Navigator可以启动GUI界面管理，Anaconda Prompt可以打开conda命令行
+
+进入命令行后先conda create -n tf2 python=3.7创建一个名为tf2的新环境，默认环境是base，我不习惯直接在默认环境开搞
+
+使用conda activate tf2切换到tf2环境
+
+tensorflow分为cpu和gpu版本，gpu版本安装据说比较复杂？(不过在conda就是一句命令的事情。。。
+
+gpu版本同时要安装Cuda(nvidia)，使用nvidia-smi命令可以查看nvidia显卡驱动的一些信息
+
+conda install tensorflow-gpu 安装tensorflow-gpu版本，卸载是uninstall
+
+使用ipython notebook启动Jupyter
+
+Pycharm的配置，Project Interpreter设置一下conda环境的目录就可以了
